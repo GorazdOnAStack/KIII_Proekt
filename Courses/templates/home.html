@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        #naslov {
+            background: linear-gradient(-45deg, #387ff1, #15c160, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            /*border-radius: 200px;*/
+        }
+        #naslov_tekst{
+            color: ghostwhite;
+            text-shadow: 2px 2px darkgray;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        a:link{
+            color: #0c05e5;
+        }
+        #bg {
+            background: linear-gradient(172deg, #eaefee, #14a8df);
+            background-size: 600% 600%;
+            height: 150vh;
+
+            -webkit-animation: AnimationName 50s ease infinite;
+            animation: AnimationName 50s ease infinite;
+        }
+
+        @-webkit-keyframes AnimationName {
+            0%{background-position:56% 0%}
+            50%{background-position:45% 100%}
+            100%{background-position:56% 0%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:56% 0%}
+            50%{background-position:45% 100%}
+            100%{background-position:56% 0%}
+        }
+    </style>
+</head>
+<body id="bg">
+<div id='naslov' class="row mt-1 py-3" style="">
+    <div class="col-4"></div>
+    <div id='naslov_tekst' class="col-4 h1" style="text-align: center;cursor: pointer" onclick="location.href='{% url 'home' %}'">Welcome
+        to eXpert
+    </div>
+    <div class="col-lg-3" style="background: rgba(245,245,245,0.2);color: floralwhite;border-radius: 50px;text-align: center">
+        {% if request.user.is_authenticated %}
+        <div style="display: inline" xmlns="http://www.w3.org/1999/html">Hello, {{request.user.username}}</div>
+        <span>
+            <a href="{% url 'logout' %}">Logout</a>
+        </span>
+        <div>You can add a post by clicking on this: <a href="{% url 'addpost'%}">Add Post</a></div>
+
+        {% else %}
+        <div style="display: block;">
+            Hello User, feel free to browse!<br>Or would you like to
+            <a href="{% url 'register' %}"> Register.</a> Already have an account? <a
+                href="{% url 'login' %}">Login</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container">
+    <div class="col" style="background: #0e93ae">
+        <div class="row col offset-4 mt-1" style="text-align: center">
+            <p class="mt-2" style="font-size: 20px;color: #fdfdfc">What would you like to learn?</p>
+        </div>
+        <div class="row" style="background: #0dcaf0;">
+            <nav class="navbar navbar-expand-lg navbar-light col">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-5 mb-2">
+                            <a class="nav-link" href="{%url 'java' %}" style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">Java <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'cee' %}"  style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">C</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'cplus' %}" style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">C++</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'java_script' %}" style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">JS</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'html5' %}" style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">HTML5</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'boot_strap' %}" style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">Bootstrap</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row mt-2" >
+            <div class="col-8 pt-3" style="background: rgba(255,255,255,0.7);text-align: center;border-radius: 10px">
+                Intro
+                <p class="pt-3 p-2" style="text-align: justify;font-family: Candara">Do you want to learn how to code a website? Behind the scenes, most website code contains HTML, CSS, and JavaScript.
+                    As a beginner, learning these programming languages (even at a beginner level) requires hours of studying and practice.
+                    The good news for business owners is that there are excellent tools that let you create any type of website (without writing code).
+                    Here we’ll cover how to code a website, write code in <b>multiple languages</b> and teach you all the basics up to the advanced techniques.
+                    For those who want to code a website from scratch, we will share how to learn the code fundamentals, so you can do just that.</p>
+                <p class="p-2" style="text-align: justify">
+                    You will also introduced to problem solving as it relates to programming, as they learn valuable skills such as debugging, commenting, and structure of language. At the conclusion of the unit, students compile their work to create a personal website they can publish and share.
+                </p>
+                <p class="p-2" style="text-align: justify">
+                    Lots of the key concepts in coding are similar across different coding languages. They often follow similar rules (though there are exceptions) and the terminology can be the same. <br>Here's some useful definitions:<br>
+                    <strong>Variables</strong> are values stored in the computer by the code, which can change and can be used by referencing the variable's name.
+                    Each variable will have a data type, which tells the computer what kind of information is stored in that variable and determines what can be done with that variable. Common ones include numbers, strings (text), and a list of values (also called an array).
+                    <br><strong>Operators</strong> do things with variables, such as calculations or logic. For example, mathematical operators like +-*/ can be used to do calculations, and logical operators like AND, OR, and NOT can be used to combine statements using logic (you might've done this before when searching online).
+                    <br><strong>Comments</strong> are text in the code that is not read by the computer, but are designed to be read by humans. They make it easier for you and others to understand what your code is doing, or to stop a line of code from running when you're testing.
+                    <br><strong>Loops</strong> are a way of repeating a section of code for different values, without having to write the code out many times.
+                    <br><strong>Conditions</strong> allow you to add decisions to code, asking IF something is true or false to decide if some code should run.
+                    And functions allow you to define a section of code with a name so you can make it run in different places in your code, again without writing it out many times.
+                </p>
+            </div>
+            <div class="pr-5 pb-3 col-4" style="background: rgba(255,255,255,0.1);margin-bottom: 500px;border-radius: 20px;font-size: 30px;text-align: center;padding-top: 100px;padding-left: 50px">
+                Click on a Category to see Posts
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function go_home() {
+        "{% url 'home' %}"
+    }
+</script>
+</body>
+</html>

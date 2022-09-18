@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        #naslov {
+            background: linear-gradient(-45deg, #387ff1, #15c160, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            /*border-radius: 200px;*/
+        }
+
+        #naslov_tekst {
+            color: ghostwhite;
+            text-shadow: 2px 2px darkgray;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        a:link {
+            color: #0c05e5;
+        }
+
+        #bg {
+            background: linear-gradient(172deg, #eaefee, #14a8df);
+            background-size: 600% 600%;
+            height: 150vh;
+
+            -webkit-animation: AnimationName 50s ease infinite;
+            animation: AnimationName 50s ease infinite;
+        }
+
+        @-webkit-keyframes AnimationName {
+            0% {
+                background-position: 56% 0%
+            }
+            50% {
+                background-position: 45% 100%
+            }
+            100% {
+                background-position: 56% 0%
+            }
+        }
+
+        @keyframes AnimationName {
+            0% {
+                background-position: 56% 0%
+            }
+            50% {
+                background-position: 45% 100%
+            }
+            100% {
+                background-position: 56% 0%
+            }
+        }
+    </style>
+</head>
+<body id="bg">
+<div id='naslov' class="row mt-1 py-3" style="">
+    <div class="col-4"></div>
+    <div id='naslov_tekst' class="col-4 h1" style="text-align: center;cursor: pointer"
+         onclick="location.href='{% url 'home' %}'">Welcome
+        to eXpert
+    </div>
+    <div class="col-lg-3"
+         style="background: rgba(245,245,245,0.2);color: floralwhite;border-radius: 50px;text-align: center">
+        {% if request.user.is_authenticated %}
+        <div style="display: inline" xmlns="http://www.w3.org/1999/html">Hello, {{request.user.username}}</div>
+        <span>
+            <a href="{% url 'logout' %}">Logout</a>
+        </span>
+        <div>You can add a post by clicking on this: <a href="{% url 'addpost'%}">Add Post</a></div>
+
+        {% else %}
+        <div style="display: block;">
+            Hello User, feel free to browse!<br>Or would you like to
+            <a href="{% url 'register' %}"> Register.</a> Already have an account? <a
+                href="{% url 'login' %}">Login</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container">
+    <div class="col" style="background: #0e93ae">
+        <div class="row col offset-4 mt-1" style="text-align: center">
+            <p class="mt-2" style="font-size: 20px;color: #fdfdfc">What would you like to learn?</p>
+        </div>
+        <div class="row" style="background: #0dcaf0;">
+            <nav class="navbar navbar-expand-lg navbar-light col">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-5 mb-2">
+                            <a class="nav-link" href="{%url 'java' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;background: rgba(255,255,255,0.2);border-radius: 10px">Java
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'cee' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">C</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'cplus' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">C++</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'java_script' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">JS</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'html5' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">HTML5</a>
+                        </li>
+                        <li class="nav-item mx-5">
+                            <a class="nav-link" href="{%url 'boot_strap' %}"
+                               style="color: white;font-size: 20px;padding: 5px;border-bottom: 1px solid white;">Bootstrap</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row mt-2">
+            <div class="col-8 pt-3" style="background: rgba(255,255,255,0.7);text-align: center;border-radius: 10px">
+                Intro to Java<hr>
+                <p class="pt-3 p-2" style="text-align: justify;font-family: Candara">
+                    Before learning Java, one must be familiar with these common terms of Java.<br>
+                    <br>
+                    1. Java Virtual Machine(JVM): This is generally referred to as JVM. There are three execution phases
+                    of a program. They are written, compile and run the program.
+                    Writing a program is done by a java programmer like you and me.
+                    The compilation is done by the JAVAC compiler which is a primary Java compiler included in the Java
+                    development kit (JDK). It takes the Java program as input and generates bytecode as output.
+                    In the Running phase of a program, JVM executes the bytecode generated by the compiler.
+                    <br>
+                    Now, we understood that the function of Java Virtual Machine is to execute the bytecode produced by
+                    the compiler. Every Operating System has a different JVM but the output they produce after the
+                    execution of bytecode is the same across all the operating systems. This is why Java is known as a
+                    platform-independent language.
+                    <br><br>
+                    2. Bytecode in the Development process: As discussed, the Javac compiler of JDK compiles the java
+                    source code into bytecode so that it can be executed by JVM. It is saved as .class file by the
+                    compiler. To view the bytecode, a disassembler like javap can be used.
+                    <br><br>
+                    3. <strong>Java Development Kit(JDK):</strong> While we were using the term JDK when we learn about bytecode and JVM.
+                    So, as the name suggests, it is a complete Java development kit that includes everything including
+                    compiler, Java Runtime Environment (JRE), java debuggers, java docs, etc. For the program to execute
+                    in java, we need to install JDK on our computer in order to create, compile and run the java
+                    program.
+                    <br><br>
+                    4. Java Runtime Environment (JRE): JDK includes JRE. JRE installation on our computers allows the
+                    java program to run, however, we cannot compile it. JRE includes a browser, JVM, applet supports,
+                    and plugins. For running the java program, a computer needs JRE.
+                    <br><br>
+                    5. Garbage Collector: In Java, programmers can’t delete the objects. To delete or recollect that
+                    memory JVM has a program called Garbage Collector. Garbage Collectors can recollect the objects that
+                    are not referenced. So Java makes the life of a programmer easy by handling memory management.
+                    However, programmers should be careful about their code whether they are using objects that have
+                    been used for a long time. Because Garbage cannot recover the memory of objects being referenced.
+                    <br><br>
+                    6. ClassPath: The classpath is the file path where the java runtime and Java compiler look for
+                    .class files to load. By default, JDK provides many libraries. If you want to include external
+                    libraries they should be added to the classpath.
+                    Primary/Main Features of Java
+                    <br><br>
+                    1. Platform Independent: Compiler converts source code to bytecode and then the JVM executes the
+                    bytecode generated by the compiler. This bytecode can run on any platform be it Windows, Linux, or
+                    macOS which means if we compile a program on Windows, then we can run it on Linux and vice versa.
+                    Each operating system has a different JVM, but the output produced by all the OS is the same after
+                    the execution of bytecode. That is why we call java a platform-independent language.
+                    <br><br>
+                    2. Object-Oriented Programming Language: Organizing the program in the terms of collection of
+                    objects is a way of object-oriented programming, each of which represents an instance of the class.
+                    <br>
+                    The four main concepts of Object-Oriented programming are:
+                    <br><br>
+                    Abstraction
+                    Encapsulation
+                    Inheritance
+                    Polymorphism
+                    <br><br>
+                    3. Simple: Java is one of the simple languages as it does not have complex features like pointers,
+                    operator overloading, multiple inheritances, and Explicit memory allocation.
+                    <br><br>
+                    4. Robust: Java language is robust which means reliable. It is developed in such a way that it puts
+                    a lot of effort into checking errors as early as possible, that is why the java compiler is able to
+                    detect even those errors that are not easy to detect by another programming language. The main
+                    features of java that make it robust are garbage collection, Exception Handling, and memory
+                    allocation.
+                    <br><br>
+                    5. Secure: In java, we don’t have pointers, so we cannot access out-of-bound arrays i.e it shows
+                    ArrayIndexOutOfBound Exception if we try to do so. That’s why several security flaws like stack
+                    corruption or buffer overflow are impossible to exploit in Java. Also java programs run in an
+                    environment that is independent of the os(operating system) environment which makes java programs
+                    more secure .
+                    <br><br>
+                    6. Distributed: We can create distributed applications using the java programming language. Remote
+                    Method Invocation and Enterprise Java Beans are used for creating distributed applications in java.
+                    The java programs can be easily distributed on one or more systems that are connected to each other
+                    through an internet connection.
+                    <br><br>
+                    7. Multithreading: Java supports multithreading. It is a Java feature that allows concurrent
+                    execution of two or more parts of a program for maximum utilization of the CPU.
+                    <br><br>
+                    8. Portable: As we know, java code written on one machine can be run on another machine. The
+                    platform-independent feature of java in which its platform-independent bytecode can be taken to any
+                    platform for execution makes java portable.
+                    <br><br>
+                    9. High Performance: Java architecture is defined in such a way that it reduces overhead during the
+                    runtime and at some time java uses Just In Time (JIT) compiler where the compiler compiles code
+                    on-demand basics where it only compiles those methods that are called making applications to execute
+                    faster.
+                    <br><br>
+                    10. Dynamic flexibility: Java being completely object-oriented gives us the flexibility to add
+                    classes, new methods to existing classes and even create new classes through sub-classes. Java even
+                    supports functions written in other languages such as C, C++ which are referred to as native
+                    methods.
+                    <br><br>
+                    11. Sandbox Execution: Java programs run in a separate space that allows user to execute their
+                    applications without affecting the underlying system with help of a bytecode verifier. Bytecode
+                    verifier also provides additional security as its role is to check the code for any violation of
+                    access.
+                    <br><br>
+                    12. Write Once Run Anywhere: As discussed above java application generates a ‘.class’ file which
+                    corresponds to our applications(program) but contains code in binary format. It provides ease t
+                    architecture-neutral ease as bytecode is not dependent on any machine architecture. It is the
+                    primary reason java is used in the enterprising IT industry globally worldwide.
+                    <br><br>
+                    13. Power of compilation and interpretation: Most languages are designed with purpose either they
+                    are compiled language or they are interpreted language. But java integrates arising enormous power
+                    as Java compiler compiles the source code to bytecode and JVM executes this bytecode to machine
+                    OS-dependent executable code</p>
+            </div>
+            <div class="pt-3 pr-5 pb-3 col-4"
+                 style="background: rgba(255,255,255,0.1);margin-bottom: 2000px;border-radius: 20px">
+                <ul>
+                    <p style="color: white;text-shadow: 2px 2px #515050">You might like:</p>
+                    {% for post in posts %}
+                        {% if post.category == 'Java' %}
+                        <div class="px-2 pb-1 mb-2" style="border-radius: 10px;background:rgba(255,254,254,0.5);text-align: left;font-family: Calibri">Post by: {{post.author}} -
+                            <a href="{% url 'solopost' post.pk %}">{{post.title}}<br></a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function go_home() {
+        "{% url 'home' %}"
+    }
+</script>
+</body>
+</html>
