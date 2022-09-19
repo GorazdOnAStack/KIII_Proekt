@@ -28,6 +28,6 @@ jobs:
         pip install django-embed-video --upgrade
         pip install -r requirements.txt
     - name: Run Tests'
-      run: 
+      run: |
         python manage.py test
         python manage.py runserver
