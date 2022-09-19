@@ -21,7 +21,3 @@ jobs:
         password: ${{secrets.DOCKER_PASSWORD}}
         repository: goki88/kiii_proekt
         tags: latest, ${{ github.run_humber}}
-    - name: Build the Docker image    
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name: Docker Push 
-      run: docker push ${{secrets.DOCKER_USER}}/kiii_proekt
