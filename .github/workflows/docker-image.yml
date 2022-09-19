@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: docker login
       env:
-       DOCKER_USER: ${{secrets.DOCKER_USER}}
+       DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
        DOCKER_PASSWORD: ${{secrets.DOCKER_PASWORD}}
       run:
        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
@@ -24,4 +24,4 @@ jobs:
       run: docker build . --file Dockerfile --tag chamodshehanka/node-test:$(date +%s)
 
     - name: Docker Push 
-      run: docker push ${{secrets.DOCKER_USER}}/YOUR_DOCKER_HUB_REPO_NAME
+      run: docker push ${{secrets.DOCKER_USER}}/kiii_proekt
