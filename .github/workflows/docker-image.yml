@@ -39,5 +39,5 @@ jobs:
     - name: Run Docker
       uses: addnab/docker-run-action@v3
       with:
-        image: test-image:latest
-        run: docker run test-image:latest
+        image: ${{ steps.meta.outputs.tags }}
+        run: echo "Hello"
