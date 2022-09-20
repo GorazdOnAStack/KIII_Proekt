@@ -37,7 +37,7 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         
     - name: Run Docker
-    - uses: addnab/docker-run-action@v3
+      uses: addnab/docker-run-action@v3
       with:
         image: test-image:latest
         run: docker run test-image
