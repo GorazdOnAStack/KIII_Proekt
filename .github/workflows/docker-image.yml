@@ -35,5 +35,9 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        
     - name: Run Docker
-      run: docker run docker-django-v0.0
+    - uses: addnab/docker-run-action@v3
+      with:
+        image: test-image:latest
+        run: docker run test-image
