@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  django:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-20T20:16:11.166558311Z"
+    description: A Helm chart for Kubernetes
+    digest: 481558f7b57bd719f590554bde09381fca5ffd3408bffb99f0d445d453fe3f82
+    name: django
+    type: application
+    urls:
+    - https://github.com/GorazdOnAStack/KIII_Proekt/releases/download/django-0.1.0/django-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-09-20T20:16:11.166665012Z"
